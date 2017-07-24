@@ -8,7 +8,7 @@ var cheerio = require('cheerio');
 
 var request = require('request');
 
-var routes = require('./controllers/controller.js')
+var routes = require('./controller/controller.js')
 
 mongoose.Promise = Promise;
 
@@ -16,17 +16,13 @@ var app = express();
 
 var PORT = process.env.PORT || 3000;
 
-app.use("/", routes);
+// app.use("/", routes);
 
 app.use(express.static("public"));
 
 app.use(bodyParser.urlencoded({
 	extended: false
 }));
-
-app.engine("handlebars", exphbs({defaultLayout: "main"}));
-
-app.set("view engine", "handlebars");
 
 var db = process.env.MONGODB_URI || "mongodb://localhost/espnReact";
 

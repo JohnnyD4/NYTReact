@@ -9,10 +9,12 @@ var GrandChild1 = React.createClass({
     return (
     	<div className="panel panel-warning">
               <div className="panel-heading">
-                <h3 className="panel-title">GrandChild #1</h3>
+                <h3 className="panel-title">Results</h3>
               </div>
               <div className="panel-body">
-                <p>GrandChild1</p>
+                <div className="content">
+                    
+                </div>
               </div>
         </div>
     )

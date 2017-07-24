@@ -20,13 +20,22 @@ var Child1 = React.createClass({
           <div className="panel-body">
   
             <p>
-              <Link to="/Child1/GrandChild1"><button className="btn btn-warning btn-sm">Show GrandChild #1</button></Link>
-              <Link to="/Child1/GrandChild2"><button className="btn btn-success btn-sm">Show GrandChild #2</button></Link>
+              {/*<form method="post" action="/search">8 */}
+                <label>Topic</label>
+                <input type="text" name="search"/>
+                <br/>
+                <label>Start Year</label>
+                <input type="text" name="startYear"/>
+                <br/>
+                <label>End Year</label>
+                <input type="text" name="endYear"/>
+                <br/>
+                <Link to="Child1/GrandChild1"><button className="btn btn-primary">Search</button></Link>
+              {/*</form>*/}
             </p>  
-
-            <div>
-              {this.props.children}
-            </div>
+          </div>
+          <div>
+                {this.props.children}
           </div>
         </div>
       </div>

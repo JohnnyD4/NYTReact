@@ -18,8 +18,8 @@ var Main = React.createClass({
             <h1>React Router</h1>
             <p><em>Children</em></p>
             
-            <Link to="/Child1"><button className="btn btn-default">Child1</button></Link>
-            <Link to="/Child2"><button className="btn brn-success">Child2</button></Link>
+            <Link to="/Child1"><button className="btn btn-default">Search</button></Link>
+            <Link to="/Child2"><button className="btn brn-success">Saved</button></Link>
           </div>
 
           <div className="container">

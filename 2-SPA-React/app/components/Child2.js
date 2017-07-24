@@ -10,7 +10,7 @@ var Child2 = React.createClass({
       <div className="col-lg-12">
         <div className="panel panel-danger">
           <div className="panel-heading">
-            <h3 className="panel-title">Child #2</h3>
+            <h3 className="panel-title">Saved</h3>
           </div>
           <div className="panel-body">
             Panel content
