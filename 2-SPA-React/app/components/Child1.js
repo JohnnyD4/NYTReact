@@ -21,14 +21,18 @@ var Child1 = React.createClass({
   
             <p>
               {/*<form method="post" action="/search">8 */}
-                <label>Topic</label>
-                <input type="text" name="search"/>
+                <label className="text-center">Topic</label>
                 <br/>
-                <label>Start Year</label>
-                <input type="text" name="startYear"/>
+                <input className="inputSearch" type="text" name="search"/>
                 <br/>
-                <label>End Year</label>
-                <input type="text" name="endYear"/>
+                <label className="text-center">Start Year</label>
+                <br/>
+                <input className="inputSearch" type="text" name="startYear"/>
+                <br/>
+                <label className="text-center">End Year</label>
+                <br/>
+                <input className="inputSearch" type="text" name="endYear"/>
+                <br/>
                 <br/>
                 <Link to="Child1/GrandChild1"><button className="btn btn-primary">Search</button></Link>
               {/*</form>*/}

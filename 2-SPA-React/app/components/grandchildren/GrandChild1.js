@@ -12,8 +12,8 @@ var GrandChild1 = React.createClass({
                 <h3 className="panel-title">Results</h3>
               </div>
               <div className="panel-body">
-                <div className="content">
-                    
+                <div className="contentDiv">
+                    <h1>hello</h1>
                 </div>
               </div>
         </div>
