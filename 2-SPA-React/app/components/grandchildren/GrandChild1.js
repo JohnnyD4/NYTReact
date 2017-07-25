@@ -13,7 +13,7 @@ var GrandChild1 = React.createClass({
               </div>
               <div className="panel-body">
                 <div className="contentDiv">
-                    <h1>hello</h1>
+                    <h1>{this.props.topicSearch}</h1>
                 </div>
               </div>
         </div>

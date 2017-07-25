@@ -38,13 +38,13 @@ module.exports = (
         <Route path="GrandChild1" component={GrandChild1} />
         <Route path="GrandChild2" component={GrandChild2} />
 
-        <IndexRoute component={GrandChild1} />
+        
       </Route>
 
       <Route path="Child2" component={Child2} />
 
       {/* If user selects any other path... we get the Info Route */}
-      <IndexRoute component={Child1} />
+    
 
     </Route>
   </Router>
