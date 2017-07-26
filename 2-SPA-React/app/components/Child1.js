@@ -5,17 +5,60 @@ var Link = require("react-router").Link;
 
 var GrandChild1 = require("./grandchildren/GrandChild1");
 
+var headlines = [];
+
 var Child1 = React.createClass({
-    getInitialState: function() {
-        return { topicSearch: "", startSearch: "", endSearch: "" };
+     getInitialState: function () {
+        return {topic: "", dates: "", datef: ""};
+    },
+    handleSubmit: function (event) {
+        // alert('Submitted topic: ' + this.state.topic + this.state.dates + this.state.datef );
+        event.preventDefault();
+        var startDate = (this.state.dates || "20170101").replace(/-/g,'');
+        var endDate = (this.state.datef || "20170101").replace(/-/g,'');
+        var userSearch = this.state.topic;
+        var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
+        url += '?' + $.param({
+            'api-key': "1d9ad7b0bbb6450fa6898276487f2e27",
+            'q'      : userSearch
+            
+        })
+        $.ajax({
+            url: url,
+            method: 'GET',
+        }).done(function(result) {
+            var docs = result.response.docs;
+            docs.forEach( function(doc) {
+                // console.log(doc.headline.main);
+                headlines.push(doc)
+            });
+            const listArticles = headlines.map((article) => 
+            <li>{article}</li>
+        );
+        return <ul>{listArticles}</ul> 
+            // console.log(headlines[0].headline.main)
+        }).fail(function(err) {
+            throw err;
+        });
+    },
+    handleTopicChange: function (event) {
+        this.setState({topic: event.target.value});
+    },
+    handleDatesChange: function (event) {
+        this.setState({dates: event.target.value});
+    },
+    handleDatefChange: function (event) {
+        this.setState({datef: event.target.value});
     },
 
-    handleChange: function(event) {
-        var newState = {};
+    showArticles: function() {
 
-        newState[event.target.id] = event.target.id;
-        this.setState(newState);
+        const listArticles = headlines.map((article) => 
+            <li>{article}</li>
+        );
+        return ( <ul>{listArticles}</ul> ); 
     },
+    
   // Here we render the component
   render: function() {
 
@@ -30,29 +73,42 @@ var Child1 = React.createClass({
           </div>
           <div className="panel-body">
   
-            <p>
+            
+             <form onSubmit={this.handleSubmit}>
+                            <div className="input-group input-group-lg">
+                                <label>TOPIC</label>
+                                <input type="text"  className="form-control" placeholder="Topic" required value={this.state.topic} onChange={this.handleTopicChange}/>
+                            </div>
+                            <br />
+                            <div className="input-group input-group-lg">
+                                <label>START YEAR</label>
+                                <input type="date" id="datestart" className="form-control"  value={this.state.dates} onChange={this.handleDatesChange}/>
+                            </div>
+                            <br />
+                            <div className="input-group input-group-lg">
+                                <label>END YEAR</label>
+                                <input type="date" id="fdate" className="form-control"  value={this.state.datef} onChange={this.handleDatefChange}/>
+                            </div>
+                            <br />
+                            <input type="submit" value="Submit" className="btn btn-danger"/>
+                        </form>
+
              
-                <label className="text-center">Topic</label>
-                <br/>
-                <input className="inputSearch" value={this.state.topicSearch} type="text" name="search" onChange={this.handleChange}/>
-                <br/>
-                <label className="text-center">Start Year</label>
-                <br/>
-                <input className="inputSearch" type="text" name="startYear"/>
-                <br/>
-                <label className="text-center">End Year</label>
-                <br/>
-                <input className="inputSearch" type="text" name="endYear"/>
-                <br/>
-                <br/>
-                <Link to="Child1/GrandChild1"><button type="submit" className="btn btn-primary">Search</button></Link>
-              
-            </p>  
           </div>
           <div>
                 
-                    {this.props.children}
-                
+            
+            <div className="panel panel-warning">
+                  <div className="panel-heading">
+                    <h3 className="panel-title">Results</h3>
+                  </div>
+                  <div className="panel-body">
+                    <div className="contentDiv">
+                        {this.showArticles()}
+                    </div>
+                  </div>
+            </div>
+                    
           </div>
         </div>
       </div>
