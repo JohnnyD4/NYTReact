@@ -31,12 +31,11 @@ var Child1 = React.createClass({
             docs.forEach( function(doc) {
                 // console.log(doc.headline.main);
                 headlines.push(doc)
+
+
             });
-            const listArticles = headlines.map((article) => 
-            <li>{article}</li>
-        );
-        return <ul>{listArticles}</ul> 
             // console.log(headlines[0].headline.main)
+            console.log(headlines)
         }).fail(function(err) {
             throw err;
         });
@@ -50,6 +49,7 @@ var Child1 = React.createClass({
     handleDatefChange: function (event) {
         this.setState({datef: event.target.value});
     },
+    console.log("line 52", headlines)
 
     showArticles: function() {
 
